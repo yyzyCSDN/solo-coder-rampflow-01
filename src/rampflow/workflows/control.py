@@ -72,6 +72,9 @@ class RampWorkflowControl:
     def commit_departure_movement(self, operation_id: str, subject: str, at: datetime, action: Callable[[], T], requirements: tuple[Decision, ...] = ()) -> OperationReceipt:
         return self._guard(operation_id, "departure.movement.committed", subject, at, action, requirements=requirements)
 
+    def publish_departure_release(self, operation_id: str, subject: str, at: datetime, action: Callable[[], T], requirements: tuple[Decision, ...] = ()) -> OperationReceipt:
+        return self._guard(operation_id, "departure.release.published", subject, at, action, requirements=requirements)
+
     def commit_stand_service_package(self, operation_id: str, subject: str, at: datetime, action: Callable[[], T], requirements: tuple[Decision, ...] = ()) -> OperationReceipt:
         return self._guard(operation_id, "stand.service.package.committed", subject, at, action, requirements=requirements)
 
